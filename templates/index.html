@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Solicitud de Servicios - Medialab Universidad Galileo</title>
+    <!-- Enlace a FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Enlace al CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .additional-option {
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            background-color: #f8f9fa;
+        }
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        /* Estilos para el ícono de ayuda */
+        .help-icon {
+            margin-left: 5px;
+            color: #007bff;
+            cursor: pointer;
+        }
+        .help-icon:hover {
+            color: #0056b3;
+        }
+        .help-text {
+            display: none;
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+        /* Estilos para el toast */
+        .toast {
+            background-color: white;
+            min-width: 350px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        
+        .toast-container {
+            z-index: 1056;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Formulario Solicitud de Servicios - Medialab Universidad Galileo</h1>
+        <form action="/submit" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+
+            <!-- Datos del solicitante -->
+            <div class="form-section">
+                <h2 class="mb-3">Datos del Solicitante</h2>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="fSolicitud" class="form-label">Fecha de Solicitud:</label>
+                        <input type="date" id="fSolicitud" name="fSolicitud" class="form-control"   >
+                        <div class="invalid-feedback">Por favor ingresa una fecha válida.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="depto" class="form-label">Nombre del departamento que solicita:</label>
+                        <select id="depto" name="depto" class="form-select"   >
+                            <option value="">Seleccione un departamento</option>
+                            <option value="APA">APA</option>
+                            <option value="BIENESTAR ESTUDIANTIL">BIENESTAR ESTUDIANTIL</option>
+                            <option value="CATI">CATI</option>
+                            <option value="CCE">CCE</option>
+                            <option value="CEC">CEC</option>
+                            <option value="EDCON">EDCON</option>
+                            <option value="ESARTE">ESARTE</option>
+                            <option value="ESCUELA DOCTORAL">ESCUELA DOCTORAL</option>
+                            <option value="ESDAP">ESDAP</option>
+                            <option value="ESDRI">ESDRI</option>
+                            <option value="ESIP">ESIP</option>
+                            <option value="ESPI">ESPI</option>
+                            <option value="ESTEC">ESTEC</option>
+                            <option value="FABIQ">FABIQ</option>
+                            <option value="FACED">FACED</option>
+                            <option value="FACISA">FACISA</option>
+                            <option value="FACOM">FACOM</option>
+                            <option value="FACTEDE">FACTEDE</option>
+                            <option value="FACTI">FACTI</option>
+                            <option value="FADMOS">FADMOS</option>
+                            <option value="FICON">FICON</option>
+                            <option value="FINQ">FINQ</option>
+                            <option value="FIQUEIS">FIQUEIS</option>
+                            <option value="FISICC">FISICC</option>
+                            <option value="GES">GES</option>
+                            <option value="IC">IC</option>
+                            <option value="ICMAR">ICMAR</option>
+                            <option value="IDEA">IDEA</option>
+                            <option value="IDS">IDS</option>
+                            <option value="IES">IES</option>
+                            <option value="IICTA">IICTA</option>
+                            <option value="IIO">IIO</option>
+                            <option value="INFORMÁTICA">INFORMÁTICA</option>
+                            <option value="IRE">IRE</option>
+                            <option value="IVN">IVN</option>
+                            <option value="LASI">LASI</option>
+                            <option value="MEDIALAB">MEDIALAB</option>
+                            <option value="PDH">PDH</option>
+                            <option value="PRESTACIONES Y PERSONAL">PRESTACIONES Y PERSONAL</option>
+                            <option value="RECTORIA">RECTORIA</option>
+                            <option value="REDES">REDES</option>
+                            <option value="VICERRECTORIA">VICERRECTORIA</option>
+                            <option value="VICERRECTORIA ADMINISTRATIVA">VICERRECTORIA ADMINISTRATIVA</option>
+                            <option value="OTRO">OTRO</option>
+
+                        </select>
+                        <div class="invalid-feedback">Por favor selecciona un departamento.</div>
+                    </div>
+                </div>
+                <div class="row g-3 mt-2">
+                    <div class="col-md-4">
+                        <label for="nombreSolicita" class="form-label">Nombre de la persona que solicita:</label>
+                        <input type="text" id="nombreSolicita" name="nombreSolicita" class="form-control"   >
+                        <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="correoElectronico" class="form-label">Correo Electrónico:</label>
+                        <input type="email" id="correoElectronico" name="email" class="form-control" placeholder="ejemplo@dominio.com"   >
+                        <div class="invalid-feedback">Por favor ingresa un correo electrónico válido.</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="numTelefono" class="form-label">Número de teléfono o extensión:</label>
+                        <input type="number" id="numTelefono" name="numTelefono" class="form-control"   >
+                        <div class="invalid-feedback">Por favor ingresa un número de teléfono o extensión válida.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Datos del evento -->
+            <div class="form-section">
+                <h2 class="mb-3">Datos del Evento</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="fechaEvento" class="form-label">Fecha del evento:</label>
+                        <input type="date" id="fechaEvento" name="fechaEvento" class="form-control"   >
+                        <div class="invalid-feedback">Por favor selecciona una fecha válida.</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="horaInicio" class="form-label">Hora de inicio del evento:</label>
+                        <input type="time" id="horaInicio" name="horaInicio" class="form-control"   >
+                        <div class="invalid-feedback">Por favor ingresa una hora válida.</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="horaFin" class="form-label">Hora de finalización del evento:</label>
+                        <input type="time" id="horaFin" name="horaFin" class="form-control"   >
+                        <div class="invalid-feedback">Por favor ingresa una hora válida.</div>
+                    </div>
+                </div>
+                <div class="row g-3 mt-2">
+                    <div class="col-md-6">
+                        <label for="nombreEvento" class="form-label">Nombre del evento:</label>
+                        <textarea id="nombreEvento" name="nombreEvento" class="form-control" rows="2"   ></textarea>
+                        <div class="invalid-feedback">Por favor ingresa un nombre válido.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ubicacionEvento" class="form-label">Ubicación del evento (Salón, Torre, dirección y nombre del lugar):</label>
+                        <textarea id="ubicacionEvento" name="ubicacionEvento" class="form-control" rows="2"   ></textarea>
+                        <!-- <input type="text" id="ubicacionEvento" name="ubicacionEvento" class="form-control"   > -->
+                        <div class="invalid-feedback">Por favor ingresa una ubicación válida.</div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Observaciones adicionales -->
+            <div class="form-section">
+                <h2 class="mb-3">Observaciones adicionales</h2>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label for="observaciones" class="form-label">Observaciones adicionales para tu evento:</label>
+                        <textarea id="observaciones" name="observaciones" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selección de servicios -->
+            <div class="form-section">
+                <h2 class="mb-3">Selección de Servicios</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="option1" name="options[]" value="option1" class="form-check-input" onchange="updateAdditionalOptions()">
+                            <label for="option1" class="form-check-label">
+                                Transmisión en vivo (Públi|co)
+                                <i class="fas fa-circle-question help-icon" onclick="toggleHelp('help-option1')"></i>
+                            </label>
+                            <div id="help-option1" class="help-text">
+                                Este servicio permite transmitir en vivo el evento a través de plataformas como YouTube o Facebook.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="option2" name="options[]" value="option2" class="form-check-input" onchange="updateAdditionalOptions()">
+                            <label for="option2" class="form-check-label">
+                                Opción 2
+                                <i class="fas fa-circle-question help-icon" onclick="toggleHelp('help-option2')"></i>
+                            </label>
+                            <div id="help-option2" class="help-text">
+                                Este servicio incluye la grabación y edición del evento para su posterior distribución.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="option3" name="options[]" value="option3" class="form-check-input" onchange="updateAdditionalOptions()">
+                            <label for="option3" class="form-check-label">
+                                Opción 3
+                                <i class="fas fa-circle-question help-icon" onclick="toggleHelp('help-option3')"></i>
+                            </label>
+                            <div id="help-option3" class="help-text">
+                                Este servicio ofrece soporte técnico durante el evento para garantizar que todo funcione correctamente.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="option4" name="options[]" value="option4" class="form-check-input" onchange="updateAdditionalOptions()">
+                            <label for="option4" class="form-check-label">
+                                Opción 4
+                                <i class="fas fa-circle-question help-icon" onclick="toggleHelp('help-option4')"></i>
+                            </label>
+                            <div id="help-option4" class="help-text">
+
+                                Este servicio ofrece soporte técnico durante el evento para garantizar que todo funcione correctamente.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="option5" name="options[]" value="option5" class="form-check-input" onchange="updateAdditionalOptions()">
+                            <label for="option5" class="form-check-label">
+                                Opción 5    
+                                <i class="fas fa-circle-question help-icon" onclick="toggleHelp('help-option5')"></i>
+                            </label>
+                            <div id="help-option5" class="help-text">
+                                Este servicio ofrece soporte técnico durante el evento para garantizar que todo funcione correctamente.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="option6" name="options[]" value="option6" class="form-check-input" onchange="updateAdditionalOptions()">
+                            <label for="option6" class="form-check-label">
+                                Opción 6
+
+                                <i class="fas fa-circle-question help-icon" onclick="toggleHelp('help-option6')"></i>
+                            </label>
+                            <div id="help-option6" class="help-text">
+                                Este servicio ofrece soporte técnico durante el evento para garantizar que todo funcione correctamente.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="option7" name="options[]" value="option7" class="form-check-input" onchange="updateAdditionalOptions()">
+                            <label for="option7" class="form-check-label">
+                                Opción 7
+                                <i class="fas fa-circle-question help-icon" onclick="toggleHelp('help-option7')"></i>
+                            </label>
+                            <div id="help-option7" class="help-text">
+                                Este servicio ofrece soporte técnico durante el evento para garantizar que todo funcione correctamente.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="option8" name="options[]" value="option8" class="form-check-input" onchange="updateAdditionalOptions()">
+                            <label for="option8" class="form-check-label">
+                                Opción 8
+                                <i class="fas fa-circle-question help-icon" onclick="toggleHelp('help-option8')"></i>
+                            </label>
+                            <div id="help-option8" class="help-text">
+                                Este servicio ofrece soporte técnico durante el evento para garantizar que todo funcione correctamente.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="option9" name="options[]" value="option9" class="form-check-input" onchange="updateAdditionalOptions()">
+                            <label for="option9" class="form-check-label">
+                                Opción 9
+                                <i class="fas fa-circle-question help-icon" onclick="toggleHelp('help-option9')"></i>
+                            </label>
+                            <div id="help-option9" class="help-text">
+                                Este servicio ofrece soporte técnico durante el evento para garantizar que todo funcione correctamente.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opciones adicionales dinámicas -->
+            <div id="additional-options-container" class="form-section"></div>
+
+            <!-- Botón de envío -->
+            <button type="submit" class="btn btn-primary w-100">Generar Archivo</button>
+        </form>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast-container position-fixed top-50 start-50 translate-middle">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+            <div class="toast-header">
+                <strong class="me-auto">Instrucciones</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p>1. Revise que todos los datos ingresados sean correctos.</p>
+                <p>2. Guarde el archivo PDF.</p>
+                <p>3. Envie el archivo a las direcciones de correo eletronico: medialab@galileo.edu, dantonio@galileo.edu.</p>
+                <p>5. Adjunte al correo electronico cualquier otro documento que considere necesario.</p>
+                <p>6. Si tiene alguna duda, puede contactar al correo: medialab@galileo.edu</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlace al JavaScript de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Validación de Bootstrap
+        (function () {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+
+        // Mostrar Toast y luego enviar el formulario
+        document.querySelector('form').addEventListener('submit', function (event) {
+            // Evitar que el formulario se envíe automáticamente
+            event.preventDefault();
+
+            // Mostrar el Toast
+            const toast = new bootstrap.Toast(document.getElementById('liveToast'));
+            toast.show();
+
+            // Enviar el formulario después de 3 segundos (3000 milisegundos)
+            setTimeout(() => {
+                event.target.submit(); // Enviar el formulario
+            }, 3000); // Ajusta el tiempo según sea necesario
+        });
+
+        // Actualizar opciones adicionales dinámicamente
+        function updateAdditionalOptions() {
+            const checkboxes = document.querySelectorAll('input[name="options[]"]:checked');
+            const container = document.getElementById('additional-options-container');
+            container.innerHTML = '';
+
+            checkboxes.forEach(checkbox => {
+                const additionalDiv = document.createElement('div');
+                additionalDiv.className = 'additional-option';
+                additionalDiv.id = `additional-${checkbox.value}`;
+                additionalDiv.innerHTML = generateAdditionalOptions(checkbox.value);
+                container.appendChild(additionalDiv);
+            });
+        }
+
+        function generateAdditionalOptions(option) {
+            const optionsConfig = {
+                'option1': {
+                    title: 'Opciones adicionales para Transmisión en vivo (Público):',
+                    options: [
+                        { id: 'extra1-1', value: 'extra1-1', label: 'Autorizo la publicación del material', checked: true, disabled: false },
+                        { id: 'extra1-2', value: 'extra1-2', label: 'Extra 1-2' }
+                    ]
+                },
+                'option2': {
+                    title: 'Opciones adicionales para Opción 2:',
+                    options: [
+                        { id: 'extra2-1', value: 'extra2-1', label: 'Extra 2-1' },
+                        { id: 'extra2-2', value: 'extra2-2', label: 'Extra 2-2' }
+                    ]
+                },
+                'option3': {
+                    title: 'Opciones adicionales para Opción 3:',
+                    options: [
+                        { id: 'extra3-1', value: 'extra3-1', label: 'Extra 3-1' },
+                        { id: 'extra3-2', value: 'extra3-2', label: 'Extra 3-2' }
+                    ]
+                },
+                'option4': {
+                    title: 'Opciones adicionales para Opción 4:',
+                    options: [
+                        { id: 'extra4-1', value: 'extra4-1', label: 'Extra 4-1' },
+                        { id: 'extra4-2', value: 'extra4-2', label: 'Extra 4-2' }
+                    ]
+                },
+                'option5': {
+                    title: 'Opciones adicionales para Opción 5:',
+                    options: [
+                        { id: 'extra5-1', value: 'extra5-1', label: 'Extra 5-1' },
+                        { id: 'extra5-2', value: 'extra5-2', label: 'Extra 5-2' }
+                    ]
+                },
+                'option6': {
+                    title: 'Opciones adicionales para Opción 6:',
+                    options: [
+                        { id: 'extra6-1', value: 'extra6-1', label: 'Extra 6-1' },
+                        { id: 'extra6-2', value: 'extra6-2', label: 'Extra 6-2' }
+                    ]
+                },
+                'option7': {
+                    title: 'Opciones adicionales para Opción 7:',
+                    options: [
+                        { id: 'extra7-1', value: 'extra7-1', label: 'Extra 7-1' },
+                        { id: 'extra7-2', value: 'extra7-2', label: 'Extra 7-2' }
+                    ]
+                },
+                'option8': {
+                    title: 'Opciones adicionales para Opción 8:',
+                    options: [
+                        { id: 'extra8-1', value: 'extra8-1', label: 'Extra 8-1' },
+                        { id: 'extra8-2', value: 'extra8-2', label: 'Extra 8-2' }
+                    ]
+                },
+                'option9': {
+                    title: 'Opciones adicionales para Opción 9:',
+                    options: [
+                        { id: 'extra9-1', value: 'extra9-1', label: 'Extra 9-1' },
+                        { id: 'extra9-2', value: 'extra9-2', label: 'Extra 9-2' }
+                    ]
+                }
+            };
+
+            const config = optionsConfig[option];
+            if (!config) return '';
+
+            const optionsHTML = config.options.map(opt => `
+                <div class="form-check">
+                    <input type="checkbox" 
+                        id="${opt.id}" 
+                        name="${option}[]" 
+                        value="${opt.value}" 
+                        class="form-check-input"
+                        ${opt.checked ? 'checked' : ''}
+                        ${opt.disabled ? 'disabled' : ''}>
+                    <label for="${opt.id}" class="form-check-label">${opt.label}</label>
+                </div>
+            `).join('');
+
+            return `
+                <h4 class="mt-3">${config.title}</h4>
+                ${optionsHTML}
+            `;
+        }
+
+        // Mostrar/ocultar descripción de ayuda
+        function toggleHelp(id) {
+            const helpText = document.getElementById(id);
+            if (helpText.style.display === "none" || helpText.style.display === "") {
+                helpText.style.display = "block";
+            } else {
+                helpText.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
